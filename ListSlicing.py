@@ -1,0 +1,7 @@
+friends = ["Rolf","Charlie","Anna","Bob", "Jen"]
+# print(friends[2:4]) # output is ['Anna', 'Bob']
+# print(friends[0:]) # output is ['Rolf', 'Charlie', 'Anna', 'Bob', 'Jen']
+print(friends[-3:]) # output is ['Anna', 'Bob', 'Jen']
+print(friends[-3:4]) # output is ['Anna', 'Bob']
+print(friends[:-2]) # output is ['Rolf', 'Charlie', 'Anna']
+print(friends[-3:-1]) # output is ['Anna', 'Bob']

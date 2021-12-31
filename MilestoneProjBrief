@@ -1,0 +1,30 @@
+Add new movies to own collection
+so that i can keep track of all my movies
+
+List all the movies in my collection 
+so that i can see what movies I already have
+
+Find a movie by using the movie title
+so that i can locate a specific movie easily when the
+collection grows
+
+
+Implementation Tasks:
+
+1. Decide where to store movies in code
+Whether we are gonna be using a database, 
+whether we're gonna be pulling things in a dictionary or a List or variables
+
+Essentially: Where is the data that our program relies on gonna go?
+
+2. Decide what data we want to store for each movie
+Whether that's gonna be a dictionary representing some movie properties
+or a tuple with just the properties themselves etc etc
+dictionary: movie title, director and release year
+
+3. Show the user a menu and let them pick an option.
+
+4. Implement each requirement in turn: add, list and find movies,
+each as a separate function
+
+5. Stop running the program when they type in 'q' in the menu
