@@ -110,7 +110,7 @@ class LinkedList:
         Inserts a new Node containing data at index position
         Insertion takes constant O(1) time but finding at the insertion point takes 
         linear time
-        Therefore takes overall linear 
+        Therefore insertion takes overall linear O(n) time
         
         even tho we can easily insert a new node w/o having to shift
         the rest; ultimately adding to the head or tail of the linked list
@@ -121,34 +121,69 @@ class LinkedList:
         
         if index > 0:
             new = Node(data)
+
             position = index
             current = self.head
 
+        #keep calling next node while reassigning the current node
         while position > 1:
-            current = node.next_node
-            position -= 1
+            current = current.next_node
+            position -= 1 #decrements 1.. loop exits & current will be 
 
         prev_node  = current
         next_node = current.next_node
 
         prev_node.next_node = new
+        new.next_node = next_node
 
     """
-    2 TYPES OF REMOVE METHODS:
+    2 TYPES OF defining REMOVE METHODS:
     -Provide a key (data the node stores) to remove as an arguemnt
     -Provide an index 
     
     """
 
     def remove(self, key):
-        current = self.head
-        previous = None 
-        found = False
-        
+        """
+        Removes node containing data that matches the key
+        Returns the node or None if key doesnt exist
+        Takes O(n) time (linear time) because it has to search the entire list
+        in the worst case scenario
+        """
+        current = self.head #point to the head
+        previous = None #keep track of the prev node
+        found = False #serves as stopping condition
+
         #to keep track of the current node in the list as it traverses 
         #down to find the node that matches the key
+        #loop will keep traversing the linked list as long as found is false;
+        #meaning we havent found the key we are looking for
+        #once we found the matching value, we set the found value to be true;
+        #essentially ending the loop
+        
+        #WHILE current is not none, loop will continue executing
+        #if current is None, this means we have gone past the tail node
+        #the second condition asks the loop to continue evaluating as long as not found equals true
+        #if either one condition evaluates to false, then the loop will terminate
+        while current and not found:
+            #1st scenario: key matches the data in the node
+            #current variable is still pointing to head of the list
+            if current == key and current is self.head:
+                found = True 
+                self.head = current.next_node #points to second node in the list
 
-
+            #2nd scenario: key matches the node that's not the heads
+            elif current.data == key:
+                found = True
+                previous.next_node = current.next_node
+            #3rd scenario: current node we are evaluating does not contain the data that matches the key
+            #Make previous node point to the current node and then
+            #set current to the next node
+            else:   
+                previous = current
+                current = current.next_node
+        #common for remove operations to return the value being removed
+        return current
 
     def __repr__(self):
         """
